@@ -1,3 +1,4 @@
+import renderSortTree from "./visual"
 import clerk from "./records"
 
 function merge(left: number[], right:number[]) {
@@ -24,11 +25,13 @@ function merge(left: number[], right:number[]) {
 }
 
 function mergeSort(array: number[], parentId = ""): number[] {
+  // record call
   const currentId = clerk.assignId()
   clerk.record(currentId, parentId, array)
 
+  // base case
   if(array.length == 1) {
-    return array // base case
+    return array
   }
 
   // split array
@@ -43,5 +46,7 @@ function mergeSort(array: number[], parentId = ""): number[] {
   // merge
   return merge(sortedLeft, sortedRight)
 }
+
+setTimeout(renderSortTree, 500, clerk.getRecords())
 
 export default mergeSort

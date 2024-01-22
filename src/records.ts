@@ -1,5 +1,5 @@
 class Clerk{
-  public records: object[] = []
+  private records: object[] = []
 
   constructor() {}
 
@@ -7,8 +7,12 @@ class Clerk{
     return "#" + Math.floor(Math.random() * 10000).toString()
   }
 
-  record(id: string, parentId: string, array: number[]) {
-    this.records.push({id, parentId, array})
+  record(id: string, parentId: string, data: number[]) {
+    this.records.push({id, parentId, data})
+  }
+
+  getRecords(){
+    return this.records
   }
 }
 
